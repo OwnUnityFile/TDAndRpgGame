@@ -4,21 +4,35 @@ using System.Collections;
 public class GameMgr : MonoBehaviour {
     static GameMgr Inst;
     TableMgr _table;
+    public TableMgr GetTableMgr
+    {
+        get
+        {
+            if (_table == null)
+            {
+                _table = new TableMgr();
+            }
+            return _table;
+        }
+    }
     public static GameMgr Instance
     {
         get
         {
+            if (Inst == null)
+            {
+                Inst = new GameMgr();
+            }
             return Inst;
         }
     }
     void Awake()
     {
         Inst = this;
-        _table = new TableMgr();
+        
+        this.gameObject.AddComponent<HashIDs>();
+        this.gameObject.AddComponent<HeroMgr>();
     }
-    public TableMgr GetTable
-    {
-        get { return _table; }
-    }
+    
 	
 }

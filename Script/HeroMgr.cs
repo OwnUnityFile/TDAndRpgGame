@@ -1,30 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
-//英雄的管理类
-public class HeroMgr : MonoBehaviour {
-    GameObject Hero;        //英雄的模型
+using System.Collections.Generic;
 
-	// Use this for initialization
-	void Start () {
-       
-	}
-    /// <summary>
-    /// 英雄的移动
-    /// </summary>
-    void HeroControll()
+public class HeroMgr : MonoBehaviour
+{
+    GameObject Hero;
+    List<GameObject> HeroItem = new List<GameObject>();
+    void Awake()
     {
+        Hero = Resources.Load(GameMgr.Instance.GetTableMgr.HeroItem[0].HeroName) as GameObject;
+        HeroItem.Add(Hero);
+        Instantiate(HeroItem[0]);
+    }
 
-    }
-    /// <summary>
-    /// 英雄技能攻击使用
-    /// </summary>
-    void HeroHit()
-    {
 
-    }
-	// Update is called once per frame
-	void Update () {
-        HeroControll();
-        HeroHit();
-    }
+    // Hero = Resources.Load(GameMgr.Instance.GetTable.HeroItem[0].HeroName) as GameObject;
+
+
+
 }
